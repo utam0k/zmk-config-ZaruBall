@@ -15,12 +15,12 @@
 #define SCROLL 1
 
 // スクロール量の設定
+
 #define ZMK_POINTING_DEFAULT_SCRL_VAL 100
 
 // #include <input/processors.dtsi>
 //  &trackball_listener {
 //     input-processors = <&zip_temp_layer 4 500>;
-
 //     scroll {
 //         layers = <3>;
 //         input-processors =
@@ -43,10 +43,12 @@
 / {
     behaviors {
         // スクロール用のbehaviorの設定
+
         scroll_down_up: behavior_sensor_rotate_mouse_wheel_down_up {
             compatible = "zmk,behavior-sensor-rotate";
             #sensor-binding-cells = <0>;
             bindings = <&msc SCRL_DOWN>, <&msc SCRL_UP>;
+
             tap-ms = <20>; // スクロールのタップ時間
         };
 
@@ -119,11 +121,11 @@
             display-name = "Base";
             sensor-bindings = <&scroll_down_up>;
             bindings = <
-&kp ESC    &kp N1  &kp N2      &kp N3    &kp N4     &kp N5                       &kp NUMBER_6  &kp N7    &kp N8  &kp N9     &kp N0   &kp MINUS
-&kp TAB    &kp Q   &kp W       &kp E     &kp R      &kp T                        &kp Y         &kp U     &kp I   &kp O      &kp P    &kp EQUAL
-&kp CAPS   &kp A   &kp S       &kp D     &kp F      &kp G      &kp INS           &kp LBKT      &kp H     &kp J   &kp K      &kp L    &kp SEMI   &kp SQT
-&kp LSHFT  &kp Z   &kp X       &kp C     &kp V      &kp B      &kp GRAVE         &kp RBKT      &kp N     &kp M   &kp COMMA  &kp DOT  &kp FSLH   &lt SCROLL BACKSLASH
-&td0               &kp C_MUTE  &kp LWIN  &kp LCTRL  &kp SPACE  &to_scroll_layer  &lt 2 RET     &kp BSPC                              &td1
+&kp ESC    &kp N1  &kp N2      &kp N3    &kp N4        &kp N5                    &kp NUMBER_6   &kp N7     &kp N8  &kp N9     &kp N0   &kp MINUS
+&kp TAB    &kp Q   &kp W       &kp E     &kp R         &kp T                     &kp Y          &kp U      &kp I   &kp O      &kp P    &kp EQUAL
+&kp LCTRL  &kp A   &kp S       &kp D     &kp F         &kp G      &kp INS        &kp LBKT       &kp H      &kp J   &kp K      &kp L    &kp SEMI   &kp SQT
+&kp LSHFT  &kp Z   &kp X       &kp C     &kp V         &kp B      &kp GRAVE      &kp RBKT       &kp N      &kp M   &kp COMMA  &kp DOT  &kp FSLH   &lt SCROLL BACKSLASH
+&td0               &kp C_MUTE  &kp LWIN  &kp LEFT_GUI  &kp LCTRL  &kp BACKSPACE  &kp LC(SPACE)  &kp ENTER                              &td1
             >;
         };
 
