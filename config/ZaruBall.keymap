@@ -17,6 +17,7 @@
 
 // スクロール量の設定
 
+#define ZMK_POINTING_DEFAULT_MOVE_VAL 2000
 #define ZMK_POINTING_DEFAULT_SCRL_VAL 100
 
 / {
