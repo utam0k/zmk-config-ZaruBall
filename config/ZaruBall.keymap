@@ -9,7 +9,7 @@
 #include <dt-bindings/zmk/pointing.h>
 
 #define BASE     0
-#define MOUSE    1
+#define CLICK    1
 #define LOWER    2
 #define RAISE    3
 #define ADJUST   4
@@ -47,21 +47,21 @@
             compatible = "zmk,behavior-tap-dance";
             #binding-cells = <0>;
             tapping-term-ms = <200>;
-            bindings = <&mt LALT LANG2>, <&mo RAISE>, <&mo MOUSE>;
+            bindings = <&mt LALT LANG2>, <&mo RAISE>, <&mo CLICK>;
         };
 
         td1: tap_dance_1 {
             compatible = "zmk,behavior-tap-dance";
             #binding-cells = <0>;
             tapping-term-ms = <200>;
-            bindings = <&mt RCTL LANG1>, <&mo RAISE>, <&mo MOUSE>;
+            bindings = <&mt RCTL LANG1>, <&mo RAISE>, <&mo CLICK>;
         };
 
-        lt_mouse: lt_mouse {
+        lt_click: lt_click {
             compatible = "zmk,behavior-hold-tap";
-            label = "LT_MOUSE";
+            label = "LT_CLICK";
             #binding-cells = <2>;
-            bindings = <&kp>, <&mo>;
+            bindings = <&mo>, <&kp>;
             tapping-term-ms = <170>;
             quick-tap-ms = <140>;
             flavor = "tap-preferred";
@@ -73,7 +73,7 @@
             compatible = "zmk,behavior-hold-tap";
             label = "LT_SCROLL";
             #binding-cells = <2>;
-            bindings = <&kp>, <&mo>;
+            bindings = <&mo>, <&kp>;
             tapping-term-ms = <170>;
             quick-tap-ms = <140>;
             flavor = "tap-preferred";
@@ -117,7 +117,7 @@
         to_layer_0: to_layer_0 {
             compatible = "zmk,behavior-macro-one-param";
             #binding-cells = <1>;
-            bindings = <&tog MOUSE &macro_param_1to1 &kp MACRO_PLACEHOLDER>;
+            bindings = <&tog CLICK &macro_param_1to1 &kp MACRO_PLACEHOLDER>;
             label = "TO_layer_0";
         };
 
@@ -133,7 +133,7 @@
                 <&macro_release>,
                 <&macro_param_1to1 &mkp MACRO_PLACEHOLDER>,
                 <&macro_tap>,
-                <&sl MOUSE>;
+                <&sl CLICK>;
 
             label = "MKP_EXIT_AML";
         };
@@ -149,20 +149,20 @@
             bindings = <
 &kp ESC    &kp N1      &kp N2  &kp N3         &kp N4        &kp N5                                      &kp KP_N7     &kp KP_N8  &kp KP_N9   &kp KP_DIVIDE                 &kp NUMBER_6  &kp N7  &kp N8     &kp N9   &kp N0    &kp MINUS
 &kp TAB    &kp Q       &kp W   &kp E          &kp R         &kp T                                       &kp KP_N4     &kp KP_N5  &kp KP_N6   &kp KP_MULTIPLY               &kp Y         &kp U   &kp I      &kp O    &kp P     &kp EQUAL
-&kp LCTRL  &kp A       &kp S   &kp D          &lt_mouse F MOUSE      &lt_scroll G SCROLL               &kp SQT          &kp KP_N1     &kp KP_N2  &kp KP_N3   &kp KP_MINUS       &kp LBKT   &kp H         &kp J   &kp K      &kp L    &kp SEMI  &kp TAB
-&kp LSHFT  &kp Z       &kp X   &kp C          &kp V         &kp B                      &kp GRAVE        &kp KP_ENTER  &kp KP_N0  &kp KP_DOT  &kp KP_PLUS        &kp RBKT   &kp N         &kp M   &kp COMMA  &kp DOT  &kp FSLH  &lt_scroll BACKSLASH SCROLL
+&kp LCTRL  &kp A       &kp S   &kp D          &lt_click CLICK F      &lt_scroll SCROLL G               &kp SQT          &kp KP_N1     &kp KP_N2  &kp KP_N3   &kp KP_MINUS       &kp LBKT   &kp H         &kp J   &kp K      &kp L    &kp SEMI  &kp TAB
+&kp LSHFT  &kp Z       &kp X   &kp C          &kp V         &kp B                      &kp GRAVE        &kp KP_ENTER  &kp KP_N0  &kp KP_DOT  &kp KP_PLUS        &kp RBKT   &kp N         &kp M   &kp COMMA  &kp DOT  &kp FSLH  &lt_scroll SCROLL BACKSLASH
 &td0       &kp C_MUTE          &kp LG(LC(C))  &kp LEFT_GUI  &mt_lctrl_lclk LCTRL LCLK  &kp BACKSPACE                                                            &kp SPACE  &kp ENTER                                           &td1
             >;
         };
 
-        mouse_layer {
-            display-name = "Mouse";
+        click_layer {
+            display-name = "Click";
             bindings = <
 &to_layer_0 ESC     &to_layer_0 N1  &to_layer_0 N2  &to_layer_0 N3  &to_layer_0 N4  &to_layer_0 N5                     &trans  &trans  &trans  &trans                     &to_layer_0 N6  &to_layer_0 N7  &to_layer_0 N8  &to_layer_0 N9      &to_layer_0 N0            &to_layer_0 MINUS
 &to_layer_0 TAB     &to_layer_0 Q   &to_layer_0 W   &to_layer_0 E   &to_layer_0 R   &to_layer_0 T                      &trans  &trans  &trans  &trans                     &to_layer_0 Y   &to_layer_0 U   &to_layer_0 I   &to_layer_0 O       &to_layer_0 P             &to_layer_0 EQUAL
-&to_layer_0 CAPS    &to_layer_0 A   &mkp RCLK       &mkp MCLK       &mkp LCLK       &msc SCRL_UP    &msc SCRL_LEFT     &trans  &trans  &trans  &trans    &msc SCRL_LEFT   &msc SCRL_UP    &mkp LCLK       &mkp MCLK       &mkp RCLK           &to_layer_0 SINGLE_QUOTE  &to_layer_0 SEMICOLON
-&to_layer_0 LSHIFT  &to_layer_0 Z   &to_layer_0 X   &mkp MB4        &mkp MB5        &msc SCRL_DOWN  &msc SCRL_RIGHT    &trans  &trans  &trans  &trans    &msc SCRL_RIGHT  &msc SCRL_DOWN  &mkp MB4        &mkp MB5        &to_layer_0 PERIOD  &to_layer_0 SLASH         &lt_scroll BACKSLASH SCROLL
-&trans              &trans                          &trans          &trans          &mkp LCLK       &mkp RCLK                                            &mkp MCLK        &trans                                                                                        &trans
+&to_layer_0 CAPS    &to_layer_0 A   &to_layer_0 S   &to_layer_0 D   &to_layer_0 F   &to_layer_0 G      &to_layer_0 INS       &to_layer_0 LBKT  &to_layer_0 H   &to_layer_0 J   &to_layer_0 K      &to_layer_0 L    &to_layer_0 SEMI   &to_layer_0 TAB
+&to_layer_0 LSHIFT  &to_layer_0 Z   &to_layer_0 X   &to_layer_0 C   &to_layer_0 V   &to_layer_0 B      &to_layer_0 GRAVE     &to_layer_0 RBKT  &to_layer_0 N   &to_layer_0 M   &to_layer_0 COMMA  &to_layer_0 DOT  &to_layer_0 FSLH   &to_layer_0 BACKSLASH
+&td0               &to_layer_0 C_MUTE  &to_layer_0 LG(LC(C))  &to_layer_0 LEFT_GUI  &mkp LCLK         &mkp RCLK                              &to_layer_0 SPACE  &to_layer_0 ENTER                                         &td1
             >;
         };
 
@@ -209,7 +209,7 @@
 &to_layer_0 ESC     &to_layer_0 N1  &to_layer_0 N2  &to_layer_0 N3  &to_layer_0 N4  &to_layer_0 N5                     &trans  &trans  &trans  &trans                     &to_layer_0 N6  &to_layer_0 N7  &to_layer_0 N8  &to_layer_0 N9      &to_layer_0 N0            &to_layer_0 MINUS
 &to_layer_0 TAB     &to_layer_0 Q   &to_layer_0 W   &to_layer_0 E   &to_layer_0 R   &to_layer_0 T                      &trans  &trans  &trans  &trans                     &to_layer_0 Y   &to_layer_0 U   &to_layer_0 I   &to_layer_0 O       &to_layer_0 P             &to_layer_0 EQUAL
 &to_layer_0 CAPS    &to_layer_0 A   &mkp RCLK       &mkp MCLK       &mkp LCLK       &msc SCRL_UP    &msc SCRL_LEFT     &trans  &trans  &trans  &trans    &msc SCRL_LEFT   &msc SCRL_UP    &mkp LCLK       &mkp MCLK       &mkp RCLK           &to_layer_0 SINGLE_QUOTE  &to_layer_0 SEMICOLON
-&to_layer_0 LSHIFT  &to_layer_0 Z   &to_layer_0 X   &mkp MB4        &mkp MB5        &msc SCRL_DOWN  &msc SCRL_RIGHT    &trans  &trans  &trans  &trans    &msc SCRL_RIGHT  &msc SCRL_DOWN  &mkp MB4        &mkp MB5        &to_layer_0 PERIOD  &to_layer_0 SLASH         &lt_scroll BACKSLASH SCROLL
+&to_layer_0 LSHIFT  &to_layer_0 Z   &to_layer_0 X   &mkp MB4        &mkp MB5        &msc SCRL_DOWN  &msc SCRL_RIGHT    &trans  &trans  &trans  &trans    &msc SCRL_RIGHT  &msc SCRL_DOWN  &mkp MB4        &mkp MB5        &to_layer_0 PERIOD  &to_layer_0 SLASH         &lt_scroll SCROLL BACKSLASH
 &trans              &trans                          &trans          &trans          &mkp LCLK       &mkp RCLK                                            &mkp MCLK        &trans                                                                                        &trans
             >;
         };
