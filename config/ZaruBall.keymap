@@ -17,7 +17,7 @@
 
 // スクロール量の設定
 
-#define ZMK_POINTING_DEFAULT_MOVE_VAL 3000
+#define ZMK_POINTING_DEFAULT_MOVE_VAL 3200
 #define ZMK_POINTING_DEFAULT_SCRL_VAL 24
 
 / {
@@ -86,10 +86,9 @@
         CmdTap: CmdTap {
             compatible = "zmk,behavior-hold-tap";
             #binding-cells = <2>;
-            flavor = "hold-preferred";
-            tapping-term-ms = <250>;
-            quick-tap-ms = <200>;
-            hold-trigger-on-release;
+            flavor = "balanced";
+            tapping-term-ms = <220>;
+            quick-tap-ms = <170>;
             bindings = <&kp>, <&kp>;
         };
     };
