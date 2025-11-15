@@ -17,8 +17,8 @@
 
 // スクロール量の設定
 
-#define ZMK_POINTING_DEFAULT_MOVE_VAL 1000
-#define ZMK_POINTING_DEFAULT_SCRL_VAL 15
+#define ZMK_POINTING_DEFAULT_MOVE_VAL 1350
+#define ZMK_POINTING_DEFAULT_SCRL_VAL 18
 
 / {
     conditional_layers {
