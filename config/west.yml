@@ -3,8 +3,8 @@ manifest:
   remotes:
     - name: zmkfirmware
       url-base: https://github.com/zmkfirmware
-    - name: inorichi
-      url-base: https://github.com/inorichi
+    - name: badjeff
+      url-base: https://github.com/badjeff
     - name: caksoylar
       url-base: https://github.com/caksoylar
     - name: ImSota
@@ -12,14 +12,14 @@ manifest:
   projects:
     - name: zmk
       remote: zmkfirmware
-      revision: 5138c6f
+      revision: v0.3
       import: app/west.yml
     - name: zmk-pmw3610-driver
-      remote: inorichi
-      revision: 1d9c2c6
+      remote: badjeff
+      revision: zmk-0.3
     - name: zmk-rgbled-widget
       remote: caksoylar
-      revision: fbe6dde
+      revision: main
     - name: zmk-naginata
       remote: ImSota
       revision: 2544a5a
