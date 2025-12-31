@@ -12,17 +12,17 @@ manifest:
   projects:
     - name: zmk
       remote: zmkfirmware
-      revision: main
+      revision: 5138c6f
       import: app/west.yml
     - name: zmk-pmw3610-driver
       remote: inorichi
-      revision: main
+      revision: 1d9c2c6
     - name: zmk-rgbled-widget
       remote: caksoylar
-      revision: main
+      revision: fbe6dde
     - name: zmk-naginata
       remote: ImSota
-      revision: main
+      revision: 2544a5a
   self:
     path: config
 
