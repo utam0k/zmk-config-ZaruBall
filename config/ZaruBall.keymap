@@ -144,11 +144,11 @@
         click_layer {
             display-name = "Click";
             bindings = <
-&trans     &trans  &trans  &trans  &trans  &trans                  &trans  &trans  &trans  &trans               &trans  &trans  &trans  &trans  &trans  &trans
-&trans     &trans  &trans  &trans  &trans  &trans                  &trans  &trans  &trans  &trans               &trans  &trans  &trans  &trans  &trans  &trans
-&mkp LCLK  &trans  &trans  &trans  &trans  &trans     &trans       &trans  &trans  &trans  &trans    &trans     &trans  &trans  &trans  &trans  &trans  &trans
-&trans     &trans  &trans  &trans  &trans  &trans     &trans       &trans  &trans  &trans  &trans    &trans     &trans  &trans  &trans  &trans  &trans  &trans
-&trans     &trans          &trans  &trans  &mkp LCLK  &mkp RCLK                                      &mkp MCLK  &trans                                  &trans
+&bt BT_CLR  &bt BT_SEL 0  &bt BT_SEL 1  &trans  &trans  &trans                  &trans  &trans  &trans  &trans               &trans  &trans  &trans  &trans  &trans  &trans
+&trans      &trans        &trans        &trans  &trans  &trans                  &trans  &trans  &trans  &trans               &trans  &trans  &trans  &trans  &trans  &trans
+&mkp LCLK   &trans        &trans        &trans  &trans  &trans     &trans       &trans  &trans  &trans  &trans    &trans     &trans  &trans  &trans  &trans  &trans  &trans
+&trans      &trans        &trans        &trans  &trans  &trans     &trans       &trans  &trans  &trans  &trans    &trans     &trans  &trans  &trans  &trans  &trans  &trans
+&trans      &trans                      &trans  &trans  &mkp LCLK  &mkp RCLK                                      &mkp MCLK  &trans                                  &trans
             >;
         };
 
