@@ -19,7 +19,7 @@ manifest:
       revision: zmk-0.3
     - name: zmk-rgbled-widget
       remote: caksoylar
-      revision: main
+      revision: v0.3-branch
     - name: zmk-naginata
       remote: ImSota
       revision: 2544a5a
