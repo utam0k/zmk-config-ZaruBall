@@ -143,6 +143,8 @@
     kscan0: kscan0 {
         compatible = "zmk,kscan-gpio-charlieplex";
         wakeup-source;
+        debounce-press-ms = <8>;
+        debounce-release-ms = <12>;
     };
 };
 
