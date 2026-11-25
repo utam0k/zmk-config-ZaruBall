@@ -1,0 +1,4 @@
+// Match the stock reset keymap; the mock scanner emits no key events.
+&settings_reset_kscan {
+    rows = <1>;
+};

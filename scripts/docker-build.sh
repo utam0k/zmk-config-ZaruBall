@@ -50,7 +50,7 @@ EOF
   extra_cmake_args="-DZMK_EXTRA_MODULES=${module_root}"
 
   # Clean old build dirs that may point to a different Zephyr base.
-  rm -rf /workspace/build/ZaruBall_left /workspace/build/ZaruBall_right
+  rm -rf /workspace/build/ZaruBall_left /workspace/build/ZaruBall_right /workspace/build/settings_reset
 fi
 
 if [ ! -d "${base_dir}/.west" ]; then
@@ -61,17 +61,7 @@ fi
 (cd "${base_dir}" && west update --fetch-opt=--filter=tree:0)
 (cd "${base_dir}" && west zephyr-export)
 
-conflicting_binding="${base_dir}/zephyr/dts/bindings/input/pixart,pmw3610.yaml"
-module_binding="${base_dir}/zmk-pmw3610-driver/dts/bindings/pixart,pmw3610.yml"
-if [ -f "${conflicting_binding}" ] && [ -f "${module_binding}" ]; then
-  echo "Removing conflicting Zephyr binding: ${conflicting_binding}"
-  rm -f "${conflicting_binding}"
-fi
-
-board="seeeduino_xiao_ble"
-if [ -d "${base_dir}/zephyr/boards/seeed/xiao_ble" ]; then
-  board="xiao_ble"
-fi
+board="xiao_ble//zmk"
 
 echo "Using workspace: ${base_dir}"
 echo "Using module root: ${module_root}"
@@ -91,9 +81,22 @@ if ! (cd "${base_dir}" && west build -p -s "${base_dir}/zmk/app" -d /workspace/b
   tail -n 200 "${log_dir}/ZaruBall_right.log"
   exit 1
 fi
+
+if ! (cd "${base_dir}" && west build -p -s "${base_dir}/zmk/app" -d /workspace/build/settings_reset -b "${board}" -- \
+  -DZMK_CONFIG="${config_dir}" ${extra_cmake_args} -DSHIELD="settings_reset") >"${log_dir}/settings_reset.log" 2>&1; then
+  echo "Settings reset build failed. Last 200 lines:"
+  tail -n 200 "${log_dir}/settings_reset.log"
+  exit 1
+fi
+
+mkdir -p /workspace/build/artifacts
+for target in ZaruBall_left ZaruBall_right settings_reset; do
+  cp "/workspace/build/${target}/zephyr/zmk.uf2" "/workspace/build/artifacts/${target}.uf2"
+done
+(cd "${base_dir}" && west manifest --freeze --active-only) > /workspace/build/artifacts/west-frozen.yml
 '
 
-docker run --rm -t \
+docker run --rm \
   -u "$(id -u):$(id -g)" \
   -e HOME=/tmp \
   -e ZMK_WORKSPACE_DIR \

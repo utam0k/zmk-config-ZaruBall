@@ -10,6 +10,20 @@
 
 ZMK Studio で保存済みのキーマップがある場合、ファームウェア更新後もそちらが優先されます。ビルドしたキーマップを適用するには、必要なカスタマイズを控えてから Studio の「Restore Stock Settings」を実行してください。
 
+## Zephyr 4.1 への移行
+
+このブランチは `xiao_ble//zmk` と、Zephyr 標準ドライバと共存できる `pixart,pmw3610-alt` を使います。ZMK と再利用 workflow は同じコミット `641514a97db345f499dd50b0360e594270f008fe` に固定し、PMW3610 と RGB モジュールも `config/west.yml` で固定しています。
+
+Docker が利用できる環境では次のコマンドで、CI と同じ左右・settings_reset をビルドできます。
+
+```sh
+bash scripts/docker-build.sh
+```
+
+`build/artifacts/` に `ZaruBall_left.uf2`、`ZaruBall_right.uf2`、`settings_reset.uf2` と、解決済み依存コミットの一覧 `west-frozen.yml` を保存します。ビルドログは `build/logs/` にあります。必要に応じて `ZMK_CACHE_DIR` と `ZMK_DOCKER_IMAGE` でキャッシュと Docker イメージを指定できます。
+
+左右のキースキャンには ZMK の Charlieplex ドライバを使用しています。Zephyr 4.1 では `KSCAN` API の非推奨警告が残ります。新しい Input API へのドライバ移行は別途必要です。`settings_reset` では、使わない PMW3610 ライブラリをビルド対象から外す CMake 警告も出ます。
+
 ## ビルド方法
 既にデフォルトのキーマップは作成してあります。<br>
 まずはこのキーマップでファームウェアをビルドしてキーボードに書き込んでみましょう。<br>
