@@ -3,6 +3,13 @@
 自分の好みにキーマップを編集したらActionからWorkflowを実行してファームウェアをビルドしてください。<br>
 キーマップの編集はkeymap editor, ZMK Studio両方対応しています。
 
+## このフォークの操作
+
+- 通常レイヤーのロータリエンコーダは、時計回りで下、反時計回りで上へホイールスクロールします。Lower／Adjust では音量を調整します。
+- トラックボールは CPI 1200、最小送信間隔 20ms です。BLE 再接続対策として左右ともディープスリープを無効にしています。
+
+ZMK Studio で保存済みのキーマップがある場合、ファームウェア更新後もそちらが優先されます。ビルドしたキーマップを適用するには、必要なカスタマイズを控えてから Studio の「Restore Stock Settings」を実行してください。
+
 ## ビルド方法
 既にデフォルトのキーマップは作成してあります。<br>
 まずはこのキーマップでファームウェアをビルドしてキーボードに書き込んでみましょう。<br>
@@ -34,7 +41,7 @@
 
 ### .keymapを直接編集する
 キーマップを直接編集したい方は
-[config/ZaruBall.keymap](config/Z]]aruBall.keymap)
+[config/ZaruBall.keymap](config/ZaruBall.keymap)
 を編集してください。<br>
 boards/shields下にもZaruBall.keymapが存在しますが、config化のものの方が優先されます。<br>
 詳しくは公式Docs
