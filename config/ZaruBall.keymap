@@ -93,15 +93,6 @@
 &sl { release-after-ms = <250>; }; // time needed for double click (for mkp_exit_AML)
 / {
     macros {
-        // When in AML, move to default layer when key (except mouse button) pressed
-
-        to_layer_0: TO_layer_0 {
-            compatible = "zmk,behavior-macro-one-param";
-            #binding-cells = <1>;
-            bindings = <&tog CLICK &macro_param_1to1 &kp MACRO_PLACEHOLDER>;
-            display-name = "TO_layer_0";
-        };
-
         // When LCLK pressed, exit AML (after 250ms cause by sticky layer
 
         mkp_exit_AML: MKP_EXIT_AML {
@@ -140,7 +131,7 @@
         click_layer {
             display-name = "Click";
             bindings = <
-&bt BT_CLR  &bt BT_SEL 0  &bt BT_SEL 1  &trans  &trans  &trans                  &trans  &trans  &trans  &trans               &trans  &trans  &trans  &trans  &trans  &trans
+&trans      &bt BT_SEL 0  &bt BT_SEL 1  &trans  &trans  &trans                  &trans  &trans  &trans  &trans               &trans  &trans  &trans  &trans  &trans  &trans
 &trans      &trans        &trans        &trans  &trans  &trans                  &trans  &trans  &trans  &trans               &trans  &trans  &trans  &trans  &trans  &trans
 &mkp LCLK   &trans        &trans        &trans  &trans  &trans     &trans       &trans  &trans  &trans  &trans    &trans     &trans  &trans  &trans  &trans  &trans  &trans
 &trans      &trans        &trans        &trans  &trans  &trans     &trans       &trans  &trans  &trans  &trans    &trans     &trans  &trans  &trans  &trans  &trans  &trans
@@ -177,7 +168,7 @@
             sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN>;
             bindings = <
 &trans  &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_SEL 4            &trans  &trans  &trans  &trans              &bt BT_CLR_ALL  &none  &none  &none  &none  &none
-&trans  &none         &none         &none         &none         &none                   &trans  &trans  &trans  &trans              &bt BT_CLR      &none  &none  &none  &none  &none
+&trans  &bootloader   &none         &none         &none         &none                   &trans  &trans  &trans  &trans              &bt BT_CLR      &none  &none  &none  &bootloader  &none
 &trans  &none         &none         &none         &none         &none         &none     &trans  &trans  &trans  &trans    &ind_bat  &out OUT_TOG    &none  &none  &none  &none  &none
 &trans  &none         &none         &none         &none         &none         &none     &trans  &trans  &trans  &trans    &ind_con  &studio_unlock  &none  &none  &none  &none  &none
 &trans  &kp C_MUTE                  &trans        &trans        &trans        &trans                                      &trans    &kp DEL                                     &trans
@@ -188,11 +179,11 @@
             display-name = "Scroll";
             sensor-bindings = <&scroll_down_up>;
             bindings = <
-&to_layer_0 ESC     &to_layer_0 N1  &to_layer_0 N2  &to_layer_0 N3  &to_layer_0 N4  &to_layer_0 N5                     &trans  &trans  &trans  &trans                     &to_layer_0 N6  &to_layer_0 N7  &to_layer_0 N8  &to_layer_0 N9      &to_layer_0 N0            &to_layer_0 MINUS
-&to_layer_0 TAB     &to_layer_0 Q   &to_layer_0 W   &to_layer_0 E   &to_layer_0 R   &to_layer_0 T                      &trans  &trans  &trans  &trans                     &to_layer_0 Y   &to_layer_0 U   &to_layer_0 I   &to_layer_0 O       &to_layer_0 P             &to_layer_0 EQUAL
-&to_layer_0 CAPS    &to_layer_0 A   &mkp RCLK       &mkp MCLK       &mkp LCLK       &msc SCRL_UP    &msc SCRL_LEFT     &trans  &trans  &trans  &trans    &msc SCRL_LEFT   &msc SCRL_UP    &mkp LCLK       &mkp MCLK       &mkp RCLK           &to_layer_0 SINGLE_QUOTE  &to_layer_0 SEMICOLON
-&to_layer_0 LSHIFT  &to_layer_0 Z   &to_layer_0 X   &mkp MB4        &mkp MB5        &msc SCRL_DOWN  &msc SCRL_RIGHT    &trans  &trans  &trans  &trans    &msc SCRL_RIGHT  &msc SCRL_DOWN  &mkp MB4        &mkp MB5        &to_layer_0 PERIOD  &to_layer_0 SLASH         &lt SCROLL BACKSLASH
-&trans              &trans                          &trans          &trans          &mkp LCLK       &mkp RCLK                                            &mkp MCLK        &trans                                                                                        &trans
+&trans  &trans  &trans     &trans     &trans     &trans                             &trans  &trans  &trans  &trans                     &trans           &trans          &trans     &trans     &trans     &trans
+&trans  &trans  &trans     &trans     &trans     &trans                             &trans  &trans  &trans  &trans                     &trans           &trans          &trans     &trans     &trans     &trans
+&trans  &trans  &mkp RCLK  &mkp MCLK  &mkp LCLK  &msc SCRL_UP    &msc SCRL_LEFT     &trans  &trans  &trans  &trans    &msc SCRL_LEFT   &msc SCRL_UP    &mkp LCLK  &mkp MCLK  &mkp RCLK  &trans  &trans
+&trans  &trans  &trans     &mkp MB4   &mkp MB5   &msc SCRL_DOWN  &msc SCRL_RIGHT    &trans  &trans  &trans  &trans    &msc SCRL_RIGHT  &msc SCRL_DOWN  &mkp MB4   &mkp MB5   &trans     &trans  &trans
+&trans  &trans             &trans     &trans     &mkp LCLK       &mkp RCLK                                            &mkp MCLK        &trans                                                    &trans
             >;
         };
 
